@@ -59,10 +59,19 @@ function cargarFixture() {
       data.forEach(p => {
         const item = document.createElement("div");
         item.className = "fixture-item";
-        item.innerHTML = `
-          <strong>${p.equipo1?.nombre ?? ''}</strong> ${p.golesEquipo1 ?? '-'} - ${p.golesEquipo2 ?? '-'} <strong>${p.equipo2?.nombre ?? ''}</strong><br>
-          <small>${new Date(p.fechaPartido).toLocaleString()}</small>
-        `;
+        const fechaPartido = new Date(p.fechaPartido);
+const estado = (fechaPartido.toDateString() === new Date("2020-01-01").toDateString()) ? "Finalizado"
+             : (fechaPartido.toDateString() === new Date("2020-02-02").toDateString()) ? "A Programar"
+             : fechaPartido.toLocaleDateString();
+
+item.innerHTML = `
+  <div class="fixture-teams">
+    <strong>${p.equipo1?.nombre ?? ''}</strong>
+    ${p.golesEquipo1 ?? '-'} - ${p.golesEquipo2 ?? '-'}
+    <strong>${p.equipo2?.nombre ?? ''}</strong>
+  </div>
+  <div class="fixture-status">${estado}</div>
+`;
         fixtureDiv.appendChild(item);
       });
     });

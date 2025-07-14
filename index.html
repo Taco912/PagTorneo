@@ -6,20 +6,23 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <header class="header-buttons">
+    <a href="grupo.html?grupo=Futbol6A">Fútbol 6 - Grupo A</a>
+    <a href="grupo.html?grupo=Futbol6B">Fútbol 6 - Grupo B</a>
+    <a href="grupo.html?grupo=Futbol8">Fútbol 8</a>
+  </header>
+
   <main class="presentacion">
     <h1>Bienvenido al Torneo</h1>
     <div class="grupo-container">
-      <div class="grupo-card" onclick="irAGrupo('Futbol6A')">
+      <div class="grupo-card">
         <img src="img/futbol6a.jpg" alt="Fútbol 6A">
-        <p>Fútbol 6 - Grupo A</p>
       </div>
-      <div class="grupo-card" onclick="irAGrupo('Futbol6B')">
+      <div class="grupo-card">
         <img src="img/futbol6b.jpg" alt="Fútbol 6B">
-        <p>Fútbol 6 - Grupo B</p>
       </div>
-      <div class="grupo-card" onclick="irAGrupo('Futbol8')">
+      <div class="grupo-card">
         <img src="img/futbol8.jpg" alt="Fútbol 8">
-        <p>Fútbol 8</p>
       </div>
     </div>
 
@@ -29,7 +32,5 @@
       </a>
     </div>
   </main>
-
-  <script src="main.js"></script>
 </body>
 </html>
