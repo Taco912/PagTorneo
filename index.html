@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Inicio - Torneo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="menu">
+      <div class="dropdown">
+        <button class="btn">Fútbol 6 ▾</button>
+        <div class="dropdown-content">
+          <a href="#" onclick="irAGrupo('Futbol6A')">Grupo A</a>
+          <a href="#" onclick="irAGrupo('Futbol6B')">Grupo B</a>
+        </div>
+      </div>
+      <button class="btn" onclick="irAGrupo('Futbol8')">Fútbol 8</button>
+    </div>
+  </header>
+
+  <main class="presentacion">
+    <h1>Bienvenido al Torneo</h1>
+    <div class="grupo-container">
+      <div class="grupo-card" onclick="irAGrupo('Futbol6A')">
+        <img src="https://via.placeholder.com/200x120.png?text=Fútbol+5+A" alt="Fútbol 6A">
+        <p>Fútbol 6 - Grupo A</p>
+      </div>
+      <div class="grupo-card" onclick="irAGrupo('Futbol6B')">
+        <img src="https://via.placeholder.com/200x120.png?text=Fútbol+5+B" alt="Fútbol 6B">
+        <p>Fútbol 6 - Grupo B</p>
+      </div>
+      <div class="grupo-card" onclick="irAGrupo('Futbol8')">
+        <img src="https://via.placeholder.com/200x120.png?text=Fútbol+8" alt="Fútbol 8">
+        <p>Fútbol 8</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
