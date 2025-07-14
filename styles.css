@@ -103,3 +103,17 @@ th, td {
   padding: 6px;
   text-align: center;
 }
+
+.instagram-link {
+  margin-top: 40px;
+}
+.instagram-button {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.instagram-button:hover {
+  transform: scale(1.1);
+}
