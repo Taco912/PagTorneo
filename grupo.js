@@ -1,5 +1,7 @@
 let grupoSeleccionado = null;
 let fechaSeleccionada = null;
+let fechasDisponibles = [];
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
@@ -12,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  document.getElementById("titulo-grupo").textContent = "Grupo: " + grupoSeleccionado;
+ 
 
   cargarFechas();
   cargarTabla();
@@ -22,7 +24,7 @@ function cargarFechas() {
   fetch(`https://fuchibol-fi0t.onrender.com/api/fechas?grupo=${grupoSeleccionado}`)
     .then(res => res.json())
     .then(data => {
-      console.log("Fechas recibidas:", data);
+      fechasDisponibles = data;
       const selector = document.getElementById("selector-fecha");
       selector.innerHTML = '';
       data.forEach(fecha => {
@@ -35,6 +37,7 @@ function cargarFechas() {
         fechaSeleccionada = data[0].id;
         selector.value = fechaSeleccionada;
         cargarFixture();
+        actualizarBotonesNavegacion();
       }
     });
 }
@@ -43,6 +46,24 @@ function cambiarFecha() {
   const selector = document.getElementById("selector-fecha");
   fechaSeleccionada = selector.value;
   cargarFixture();
+  actualizarBotonesNavegacion();
+}
+
+function navegarFecha(direccion) {
+  const indexActual = fechasDisponibles.findIndex(f => f.id == fechaSeleccionada);
+  const nuevoIndex = indexActual + direccion;
+  if (nuevoIndex >= 0 && nuevoIndex < fechasDisponibles.length) {
+    fechaSeleccionada = fechasDisponibles[nuevoIndex].id;
+    document.getElementById("selector-fecha").value = fechaSeleccionada;
+    cargarFixture();
+    actualizarBotonesNavegacion();
+  }
+}
+
+function actualizarBotonesNavegacion() {
+  const indexActual = fechasDisponibles.findIndex(f => f.id == fechaSeleccionada);
+  document.getElementById("btn-anterior").disabled = indexActual <= 0;
+  document.getElementById("btn-siguiente").disabled = indexActual >= fechasDisponibles.length - 1;
 }
 
 function cargarFixture() {
@@ -59,19 +80,28 @@ function cargarFixture() {
       data.forEach(p => {
         const item = document.createElement("div");
         item.className = "fixture-item";
-        const fechaPartido = new Date(p.fechaPartido);
-const estado = (fechaPartido.toDateString() === new Date("2020-01-01").toDateString()) ? "Finalizado"
-             : (fechaPartido.toDateString() === new Date("2020-02-02").toDateString()) ? "A Programar"
-             : fechaPartido.toLocaleDateString();
+       
+        const equipoLocal = p.equipo1?.nombre || "Equipo 1";
+        const equipoVisitante = p.equipo2?.nombre || "Equipo 2";
+        const golesLocal = p.golesEquipo1 ?? "-";
+        const golesVisitante = p.golesEquipo2 ?? "-";
 
-item.innerHTML = `
-  <div class="fixture-teams">
-    <strong>${p.equipo1?.nombre ?? ''}</strong>
-    ${p.golesEquipo1 ?? '-'} - ${p.golesEquipo2 ?? '-'}
-    <strong>${p.equipo2?.nombre ?? ''}</strong>
-  </div>
-  <div class="fixture-status">${estado}</div>
-`;
+        const fecha = new Date(p.fechaPartido);
+        const fechaStr = fecha.toISOString().split('T')[0];
+        let estado = "";
+        if (fechaStr === "2020-01-01") {
+          estado = "Finalizado";
+        } else if (fechaStr === "2020-02-02") {
+          estado = "A Programar";
+        } else {
+          estado = fecha.toLocaleString();
+        }
+
+        item.innerHTML = `
+          <div class="fixture-team-left"><strong>${equipoLocal}</strong></div>
+          <div class="fixture-score">${golesLocal} - ${golesVisitante}<br><small>${estado}</small></div>
+          <div class="fixture-team-right"><strong>${equipoVisitante}</strong></div>
+        `;
         fixtureDiv.appendChild(item);
       });
     });
@@ -98,7 +128,7 @@ function cargarTabla() {
         <tbody>
           ${data.map(e => `
             <tr>
-              <td>${e.nombreequipo}</td>
+              <td>${e.nombreEquipo}</td>
               <td>${e.pj}</td>
               <td>${e.pg}</td>
               <td>${e.pe}</td>

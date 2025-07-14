@@ -6,11 +6,19 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="header-buttons">
-    <a href="grupo.html?grupo=Futbol6A">Fútbol 6 - Grupo A</a>
-    <a href="grupo.html?grupo=Futbol6B">Fútbol 6 - Grupo B</a>
-    <a href="grupo.html?grupo=Futbol8">Fútbol 8</a>
-  </header>
+  
+<div class="menu-container">
+    <a href="index.html" class="grupo-btn">Inicio</a>
+  <div class="dropdown">
+    <button class="dropbtn">Fútbol 5</button>
+    <div class="dropdown-content">
+      <a href="grupo.html?grupo=Futbol6A">Grupo A</a>
+      <a href="grupo.html?grupo=Futbol6B">Grupo B</a>
+    </div>
+  </div>
+  <a href="grupo.html?grupo=Futbol8" class="grupo-btn">Fútbol 8</a>
+</div>
+
 
   <main class="presentacion">
     <h1>Bienvenido al Torneo</h1>
@@ -20,9 +28,6 @@
       </div>
       <div class="grupo-card">
         <img src="img/futbol6b.jpg" alt="Fútbol 6B">
-      </div>
-      <div class="grupo-card">
-        <img src="img/futbol8.jpg" alt="Fútbol 8">
       </div>
     </div>
 

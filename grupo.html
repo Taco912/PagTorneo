@@ -6,13 +6,28 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="menu-container">
+    <a href="index.html" class="grupo-btn">Inicio</a>
+    <div class="dropdown">
+      <button class="dropbtn">Fútbol 5</button>
+      <div class="dropdown-content">
+        <a href="grupo.html?grupo=Futbol6A">Grupo A</a>
+        <a href="grupo.html?grupo=Futbol6B">Grupo B</a>
+      </div>
+    </div>
+    <a href="grupo.html?grupo=Futbol8" class="grupo-btn">Fútbol 8</a>
+  </div>
+
   <h1 id="titulo-grupo"></h1>
   <div class="grupo-layout">
     <div class="fixture-section">
       <h2>Fixture</h2>
-      <select id="selector-fecha" onchange="cambiarFecha()">
-        <option disabled selected>Seleccioná una fecha</option>
-      </select>
+      <div class="selector-fecha-container">
+  <button id="btn-anterior" onclick="navegarFecha(-1)">◀</button>
+  <select id="selector-fecha" onchange="cambiarFecha()"></select>
+  <button id="btn-siguiente" onclick="navegarFecha(1)">▶</button>
+</div>
+
       <div id="fixture"></div>
     </div>
 

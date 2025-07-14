@@ -72,8 +72,8 @@ header {
   transform: scale(1.05);
 }
 .grupo-card img {
-  width: 200px;
-  height: 120px;
+  width: 400px;
+  height: 300px;
   object-fit: cover;
 }
 .grupo-card p {
@@ -153,4 +153,179 @@ th, td {
   text-align: right;
   font-style: italic;
   font-size: 0.9em;
+}
+
+.botones-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 12px;
+}
+.grupo-btn {
+  text-decoration: none;
+  color: #fff;
+  background-color: #333;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+.grupo-btn:hover {
+  background-color: #555;
+}
+
+.fixture-list {
+  width: 100%;
+  max-width: 600px;
+  margin: 30px auto;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.fixture-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border-bottom: 1px solid #ccc;
+  font-weight: bold;
+  background-color: #fff;
+}
+.fixture-item:last-child {
+  border-bottom: none;
+}
+.fixture-team-left {
+  flex: 1;
+  text-align: left;
+}
+.fixture-score {
+  width: 60px;
+  text-align: center;
+}
+.fixture-team-right {
+  flex: 1;
+  text-align: right;
+}
+
+.menu-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+}
+.dropbtn, .grupo-btn {
+  background-color: #333;
+  color: white;
+  padding: 10px 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  min-width: 140px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  z-index: 1;
+}
+.dropdown-content a {
+  color: black;
+  padding: 10px 12px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {
+  background-color: #eee;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropbtn:hover {
+  background-color: #555;
+}
+
+.fixture-list {
+  width: 100%;
+  max-width: 700px;
+  margin: 30px auto;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.fixture-item {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+  font-weight: bold;
+  background-color: #fff;
+}
+.fixture-item:last-child {
+  border-bottom: none;
+}
+.fixture-team-left,
+.fixture-team-right {
+  padding: 0 10px;
+}
+.fixture-score {
+  text-align: center;
+  font-size: 18px;
+}
+
+
+.fixture-item {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  align-items: center;
+  justify-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+  font-weight: bold;
+  background-color: #fff;
+  text-align: center;
+}
+
+.fixture-team-left {
+  justify-self: start;
+  padding-left: 10px;
+}
+
+.fixture-team-right {
+  justify-self: end;
+  padding-right: 10px;
+}
+
+.fixture-score {
+  font-size: 18px;
+}
+
+.selector-fecha-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.selector-fecha-container button {
+  padding: 4px 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.selector-fecha-container button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
